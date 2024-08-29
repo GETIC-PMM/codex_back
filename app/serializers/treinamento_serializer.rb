@@ -6,7 +6,7 @@
 #  capa            :string
 #  corpo           :text
 #  data_publicacao :date
-#  destaqueHome    :boolean          default(FALSE), not null
+#  destaque_home   :boolean          default(FALSE), not null
 #  resumo          :string
 #  titulo          :string
 #  created_at      :datetime         not null
