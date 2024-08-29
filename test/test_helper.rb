@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
@@ -14,4 +16,4 @@ module ActiveSupport
   end
 end
 
-Dir[File.expand_path("support/**/*.rb", __dir__)].sort.each { |rb| require(rb) }
+Dir[File.expand_path("support/**/*.rb", __dir__)].each { |rb| require(rb) }
