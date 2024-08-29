@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-
-    include KeycloakMethods
-
+  include KeycloakMethods
 end

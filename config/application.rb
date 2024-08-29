@@ -3,8 +3,9 @@
 require_relative "boot"
 
 require "rails/all"
+# TODO: Tirar linha 6 e 7 e achar outra solução para o erro de SSL
 require "openssl"
-openssl_verify_mode = OpenSSL::SSL::VERIFY_NONE
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
