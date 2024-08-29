@@ -20,3 +20,7 @@ group :development do
   gem "bundler-audit", require: false
   gem "annotate"
 end
+
+group :production do
+  gem "sidekiq", "~> 7.0"
+end
