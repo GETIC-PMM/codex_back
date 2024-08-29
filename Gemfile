@@ -6,6 +6,7 @@ gem "bootsnap", require: false
 gem "good_migrations"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
+gem "keycloak-api-rails", "0.12.4"
 gem "rails", "~> 7.2.1"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
