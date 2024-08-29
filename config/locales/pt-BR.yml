@@ -147,6 +147,7 @@ pt-BR:
       max_size_error: "O tamanho do arquivo deve ser menor que %{max_size}"
       invalid_matricula: "Matrícula inválida"
       invalid_pin: "PIN inválido"
+      required: "é obrigatório"
     template:
       body: ! "Por favor, verifique os seguintes campos:"
       header:
