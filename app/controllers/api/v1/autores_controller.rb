@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::AutoresController < ApiController
   before_action :set_autor, only: %i[show update destroy]
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::TreinamentosController < ApiController
   before_action :set_treinamento, only: %i[show update destroy]
 

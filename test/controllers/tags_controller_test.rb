@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class TagsControllerTest < ActionDispatch::IntegrationTest
@@ -12,7 +14,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tag" do
     assert_difference("Tag.count") do
-      post tags_url, params: { tag: { titulo: @tag.titulo } }, as: :json
+      post tags_url, params: {tag: {titulo: @tag.titulo}}, as: :json
     end
 
     assert_response :created
@@ -24,7 +26,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tag" do
-    patch tag_url(@tag), params: { tag: { titulo: @tag.titulo } }, as: :json
+    patch tag_url(@tag), params: {tag: {titulo: @tag.titulo}}, as: :json
     assert_response :success
   end
 

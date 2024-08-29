@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::CategoriasController < ApiController
   before_action :set_categoria, only: %i[show update destroy]
 

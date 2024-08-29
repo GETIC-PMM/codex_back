@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class TreinamentosControllerTest < ActionDispatch::IntegrationTest
@@ -12,7 +14,21 @@ class TreinamentosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create treinamento" do
     assert_difference("Treinamento.count") do
-      post treinamentos_url, params: { treinamento: { autor_id: @treinamento.autor_id, capa: @treinamento.capa, categoria_id: @treinamento.categoria_id, corpo: @treinamento.corpo, data: @treinamento.data, destaqueHome: @treinamento.destaqueHome, resumo: @treinamento.resumo, tag_id: @treinamento.tag_id, titulo: @treinamento.titulo } }, as: :json
+      post treinamentos_url,
+        params: {
+          treinamento: {
+            autor_id: @treinamento.autor_id,
+            capa: @treinamento.capa,
+            categoria_id: @treinamento.categoria_id,
+            corpo: @treinamento.corpo,
+            data: @treinamento.data,
+            destaqueHome: @treinamento.destaqueHome,
+            resumo: @treinamento.resumo,
+            tag_id: @treinamento.tag_id,
+            titulo: @treinamento.titulo
+          }
+        },
+        as: :json
     end
 
     assert_response :created
@@ -24,7 +40,21 @@ class TreinamentosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update treinamento" do
-    patch treinamento_url(@treinamento), params: { treinamento: { autor_id: @treinamento.autor_id, capa: @treinamento.capa, categoria_id: @treinamento.categoria_id, corpo: @treinamento.corpo, data: @treinamento.data, destaqueHome: @treinamento.destaqueHome, resumo: @treinamento.resumo, tag_id: @treinamento.tag_id, titulo: @treinamento.titulo } }, as: :json
+    patch treinamento_url(@treinamento),
+      params: {
+        treinamento: {
+          autor_id: @treinamento.autor_id,
+          capa: @treinamento.capa,
+          categoria_id: @treinamento.categoria_id,
+          corpo: @treinamento.corpo,
+          data: @treinamento.data,
+          destaqueHome: @treinamento.destaqueHome,
+          resumo: @treinamento.resumo,
+          tag_id: @treinamento.tag_id,
+          titulo: @treinamento.titulo
+        }
+      },
+      as: :json
     assert_response :success
   end
 

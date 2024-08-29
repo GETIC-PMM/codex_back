@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class CategoriasControllerTest < ActionDispatch::IntegrationTest
@@ -12,7 +14,7 @@ class CategoriasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create categoria" do
     assert_difference("Categoria.count") do
-      post categorias_url, params: { categoria: { titulo: @categoria.titulo } }, as: :json
+      post categorias_url, params: {categoria: {titulo: @categoria.titulo}}, as: :json
     end
 
     assert_response :created
@@ -24,7 +26,7 @@ class CategoriasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update categoria" do
-    patch categoria_url(@categoria), params: { categoria: { titulo: @categoria.titulo } }, as: :json
+    patch categoria_url(@categoria), params: {categoria: {titulo: @categoria.titulo}}, as: :json
     assert_response :success
   end
 

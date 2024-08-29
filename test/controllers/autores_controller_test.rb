@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class AutoresControllerTest < ActionDispatch::IntegrationTest
@@ -12,7 +14,7 @@ class AutoresControllerTest < ActionDispatch::IntegrationTest
 
   test "should create autor" do
     assert_difference("Autor.count") do
-      post autores_url, params: { autor: { foto: @autor.foto, nome: @autor.nome } }, as: :json
+      post autores_url, params: {autor: {foto: @autor.foto, nome: @autor.nome}}, as: :json
     end
 
     assert_response :created
@@ -24,7 +26,7 @@ class AutoresControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update autor" do
-    patch autor_url(@autor), params: { autor: { foto: @autor.foto, nome: @autor.nome } }, as: :json
+    patch autor_url(@autor), params: {autor: {foto: @autor.foto, nome: @autor.nome}}, as: :json
     assert_response :success
   end
 
