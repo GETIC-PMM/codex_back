@@ -32,3 +32,9 @@ group :production do
 end
 
 gem "active_model_serializers", "~> 0.10.14"
+
+gem "carrierwave", "~> 3.0"
+
+gem "carrierwave-base64", "~> 2.11"
+
+gem "rack-cors", "~> 2.0"

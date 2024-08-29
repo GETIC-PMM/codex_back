@@ -13,8 +13,6 @@ module CodexBack
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.2
 
-    config.i18n.default_locale = "pt-BR"
-
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
     end

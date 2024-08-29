@@ -16,3 +16,9 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular "categoria", "categorias"
+  inflect.irregular "autor", "autores"
+  inflect.irregular "treinamento", "treinamentos"
+end
