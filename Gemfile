@@ -4,9 +4,9 @@ source "https://rubygems.org"
 
 gem "bootsnap", require: false
 gem "good_migrations"
+gem "keycloak-api-rails", "0.12.4"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
-gem "keycloak-api-rails", "0.12.4"
 gem "rails", "~> 7.2.1"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
@@ -39,3 +39,7 @@ gem "carrierwave", "~> 3.0"
 gem "carrierwave-base64", "~> 2.11"
 
 gem "rack-cors", "~> 2.0"
+
+gem "kaminari", "~> 1.2"
+
+gem "pager_api", "~> 0.3.2"

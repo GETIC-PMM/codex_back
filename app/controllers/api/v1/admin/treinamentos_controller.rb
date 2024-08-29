@@ -13,7 +13,7 @@ class Api::V1::Admin::TreinamentosController < AdminController
       @treinamentos = @treinamentos.where(autor_id: params[:autor_id])
     end
 
-    render json: @treinamentos
+    paginate @treinamentos, per_page: 15
   end
 
   # GET /treinamentos/1

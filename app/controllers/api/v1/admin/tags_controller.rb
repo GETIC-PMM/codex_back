@@ -5,7 +5,7 @@ class Api::V1::Admin::TagsController < AdminController
   def index
     @tags = Tag.all
 
-    render json: @tags
+    paginate @tags, per_page: 15
   end
 
   # GET /tags/1

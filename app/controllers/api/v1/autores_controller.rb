@@ -5,7 +5,7 @@ class Api::V1::AutoresController < ApiController
   def index
     @autores = Autor.all
 
-    render json: @autores
+    paginate @autores, per_page: 15
   end
 
   # GET /autores/1

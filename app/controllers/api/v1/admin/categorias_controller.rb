@@ -5,7 +5,7 @@ class Api::V1::Admin::CategoriasController < AdminController
   def index
     @categorias = Categoria.all
 
-    render json: @categorias
+    paginate @categorias, per_page: 15
   end
 
   # GET /categorias/1
