@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "good_migrations"
 gem "rails", "~> 7.2.1"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"

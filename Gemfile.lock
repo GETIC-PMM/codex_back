@@ -102,6 +102,9 @@ GEM
       railties (>= 5.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    good_migrations (0.2.1)
+      activerecord (>= 3.1)
+      railties (>= 3.1)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -262,6 +265,7 @@ DEPENDENCIES
   debug
   dotenv (>= 3.0)
   factory_bot_rails
+  good_migrations
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.1)
