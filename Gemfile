@@ -16,6 +16,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "pgcli-rails"
   gem "bundler-audit", require: false
   gem "annotate"
 end
