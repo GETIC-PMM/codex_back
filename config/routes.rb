@@ -10,10 +10,21 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :tags
-      resources :treinamentos
-      resources :autores
-      resources :categorias
+      namespace :admin do
+        resources :tags
+        resources :treinamentos
+        resources :autores
+        resources :categorias
+      end
+
+      resources :treinamentos, only: %i[index show] do
+        collection do
+          get :destaque_home
+        end
+      end
+      resources :autores, only: %i[index show]
+      resources :categorias, only: %i[index show]
+      resources :tags, only: %i[index show]
     end
   end
 

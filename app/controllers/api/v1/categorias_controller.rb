@@ -1,5 +1,5 @@
 class Api::V1::CategoriasController < ApiController
-  before_action :set_categoria, only: %i[show update destroy]
+  before_action :set_categoria, only: %i[show]
 
   # GET /categorias
   def index
@@ -13,40 +13,10 @@ class Api::V1::CategoriasController < ApiController
     render json: @categoria
   end
 
-  # POST /categorias
-  def create
-    @categoria = Categoria.new(categoria_params)
-
-    if @categoria.save
-      render json: @categoria, status: :created
-    else
-      render json: @categoria.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /categorias/1
-  def update
-    if @categoria.update(categoria_params)
-      render json: @categoria
-    else
-      render json: @categoria.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /categorias/1
-  def destroy
-    @categoria.destroy!
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_categoria
     @categoria = Categoria.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def categoria_params
-    params.require(:categoria).permit(:titulo)
   end
 end

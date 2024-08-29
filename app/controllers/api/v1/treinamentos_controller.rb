@@ -1,9 +1,17 @@
 class Api::V1::TreinamentosController < ApiController
-  before_action :set_treinamento, only: %i[show update destroy]
+  before_action :set_treinamento, only: %i[show]
 
   # GET /treinamentos
   def index
     @treinamentos = Treinamento.all
+
+    if params[:categoria_id].present?
+      @treinamentos = @treinamentos.where(categoria_id: params[:categoria_id])
+    elsif params[:tag_id].present?
+      @treinamentos = @treinamentos.where(tag_id: params[:tag_id])
+    elsif params[:autor_id].present?
+      @treinamentos = @treinamentos.where(autor_id: params[:autor_id])
+    end
 
     render json: @treinamentos
   end
@@ -13,29 +21,11 @@ class Api::V1::TreinamentosController < ApiController
     render json: @treinamento
   end
 
-  # POST /treinamentos
-  def create
-    @treinamento = Treinamento.new(treinamento_params)
+  # GET /treinamentos/destaque_home
+  def destaque_home
+    @treinamentos = Treinamento.where(destaque_home: true)
 
-    if @treinamento.save
-      render json: @treinamento, status: :created
-    else
-      render json: @treinamento.errors.full_messages, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /treinamentos/1
-  def update
-    if @treinamento.update(treinamento_params)
-      render json: @treinamento
-    else
-      render json: @treinamento.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /treinamentos/1
-  def destroy
-    @treinamento.destroy!
+    render json: @treinamentos
   end
 
   private
@@ -43,20 +33,5 @@ class Api::V1::TreinamentosController < ApiController
   # Use callbacks to share common setup or constraints between actions.
   def set_treinamento
     @treinamento = Treinamento.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def treinamento_params
-    params.require(:treinamento).permit(
-      :titulo,
-      :resumo,
-      :categoria_id,
-      :tag_id,
-      :destaqueHome,
-      :autor_id,
-      :data_publicacao,
-      :capa,
-      :corpo
-    )
   end
 end

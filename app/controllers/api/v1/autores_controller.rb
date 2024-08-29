@@ -1,5 +1,5 @@
 class Api::V1::AutoresController < ApiController
-  before_action :set_autor, only: %i[show update destroy]
+  before_action :set_autor, only: %i[show]
 
   # GET /autores
   def index
@@ -12,32 +12,6 @@ class Api::V1::AutoresController < ApiController
   def show
     render json: @autor
   end
-
-  # POST /autores
-  def create
-    @autor = Autor.new(autor_params)
-
-    if @autor.save
-      render json: @autor, status: :created
-    else
-      render json: @autor.errors.full_messages, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /autores/1
-  def update
-    if @autor.update(autor_params)
-      render json: @autor
-    else
-      render json: @autor.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /autores/1
-  def destroy
-    @autor.destroy!
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -45,8 +19,4 @@ class Api::V1::AutoresController < ApiController
     @autor = Autor.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
-  def autor_params
-    params.require(:autor).permit(:nome, :foto)
-  end
 end
