@@ -5,6 +5,10 @@ class Api::V1::TreinamentosController < ApiController
   def index
     @treinamentos = Treinamento.all
 
+    if params[:titulo]
+      @treinamentos = @treinamentos.where("titulo ILIKE ?", "%#{params[:titulo]}%")
+    end
+
     if params[:categoria_id].present?
       @treinamentos = @treinamentos.where(categoria_id: params[:categoria_id])
     elsif params[:tag_id].present?
