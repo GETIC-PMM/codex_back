@@ -14,21 +14,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_29_165928) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "autores", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "nome"
-    t.string "foto"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categorias", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "titulo"
+    t.string "titulo", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "titulo"
+    t.string "titulo", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,22 +36,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_29_165928) do
   end
 
   create_table "treinamentos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "titulo"
-    t.string "resumo"
+    t.string "titulo", null: false
+    t.string "resumo", null: false
     t.uuid "categoria_id", null: false
     t.boolean "destaque_home", default: false, null: false
-    t.uuid "autor_id", null: false
-    t.date "data_publicacao"
-    t.string "capa"
-    t.text "corpo"
+    t.string "autor_id", null: false
+    t.date "data_publicacao", null: false
+    t.string "capa", null: false
+    t.text "corpo", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["autor_id"], name: "index_treinamentos_on_autor_id"
     t.index ["categoria_id"], name: "index_treinamentos_on_categoria_id"
   end
 
   add_foreign_key "treinamento_tags", "tags"
   add_foreign_key "treinamento_tags", "treinamentos"
-  add_foreign_key "treinamentos", "autores"
   add_foreign_key "treinamentos", "categorias"
 end
