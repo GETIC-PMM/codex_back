@@ -1,12 +1,6 @@
 class Api::V1::Admin::CategoriasController < AdminController
   before_action :set_categoria, only: %i[show update destroy]
 
-  # GET /categorias
-  def index
-    @categorias = Categoria.all
-
-    paginate @categorias, per_page: 15
-  end
 
   # GET /categorias/1
   def show

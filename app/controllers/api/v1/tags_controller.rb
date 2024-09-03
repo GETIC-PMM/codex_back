@@ -5,6 +5,10 @@ class Api::V1::TagsController < ApiController
   def index
     @tags = Tag.all
 
+    if [params[:search]].present? && params[:searchBy].present?
+      @tags = @tags.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
+    end
+
     paginate @tags, per_page: 15
   end
 

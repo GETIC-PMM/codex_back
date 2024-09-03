@@ -43,3 +43,5 @@ gem "rack-cors", "~> 2.0"
 gem "kaminari", "~> 1.2"
 
 gem "pager_api", "~> 0.3.2"
+
+gem "faker", "~> 3.4"

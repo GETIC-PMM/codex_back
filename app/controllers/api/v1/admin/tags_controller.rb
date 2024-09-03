@@ -1,13 +1,6 @@
 class Api::V1::Admin::TagsController < AdminController
   before_action :set_tag, only: %i[show update destroy]
 
-  # GET /tags
-  def index
-    @tags = Tag.all
-
-    paginate @tags, per_page: 15
-  end
-
   # GET /tags/1
   def show
     render json: @tag

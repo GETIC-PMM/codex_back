@@ -5,7 +5,11 @@ class Api::V1::CategoriasController < ApiController
   def index
     @categorias = Categoria.all
 
-    paginate @categorias, per_page: 15
+    if [params[:search]].present? && params[:searchBy].present?
+      @categorias = @categorias.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
+    end
+
+    paginate @categorias, per_page: params[:per_page] || 10
   end
 
   # GET /categorias/1
