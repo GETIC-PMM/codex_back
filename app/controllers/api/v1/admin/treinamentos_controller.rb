@@ -59,7 +59,7 @@ class Api::V1::Admin::TreinamentosController < AdminController
       :titulo,
       :resumo,
       :categoria_id,
-      :tag_id,
+      :tag_ids,
       :destaque_home,
       :autor_id,
       :data_publicacao,
