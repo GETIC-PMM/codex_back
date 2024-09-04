@@ -29,7 +29,7 @@ end
   Treinamento.create(
     titulo: Faker::Books::Lovecraft.deity,
     resumo: Faker::Books::Lovecraft.fhtagn,
-    corpo: Faker::Books::Lovecraft.paragraphs(number: 5).join("\n"),
+    corpo: Faker::Markdown.sandwich(sentences: 10, repeat: 10),
     data_publicacao: Faker::Date.between(from: 2.weeks.ago, to: Time.zone.today),
     capa: File.new(Rails.root.join("app/assets/images/gato_copy.jpg")),
     autor_id: SecureRandom.uuid,
