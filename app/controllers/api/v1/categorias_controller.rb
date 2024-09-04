@@ -9,6 +9,10 @@ class Api::V1::CategoriasController < ApiController
       @categorias = @categorias.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
     end
 
+    if params[:per_page] == "all"
+      render json: @categorias and return
+    end
+
     paginate @categorias, per_page: params[:per_page] || 10
   end
 

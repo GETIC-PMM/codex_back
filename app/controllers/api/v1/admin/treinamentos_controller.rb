@@ -25,8 +25,6 @@ class Api::V1::Admin::TreinamentosController < AdminController
   def create
     @treinamento = Treinamento.new(treinamento_params)
 
-    binding.break
-
     if @treinamento.save
       render json: @treinamento, status: :created
     else

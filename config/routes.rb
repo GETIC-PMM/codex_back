@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       namespace :admin do
         resources :tags
         resources :treinamentos
-              resources :categorias
+        resources :categorias
       end
 
       resources :treinamentos, only: %i[index show] do

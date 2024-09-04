@@ -9,7 +9,11 @@ class Api::V1::TagsController < ApiController
       @tags = @tags.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
     end
 
-    paginate @tags, per_page: 15
+    if params[:per_page] == "all"
+      render json: @tags and return
+    end
+
+    paginate @tags, per_page: params[:per_page] || 10
   end
 
   # GET /tags/1

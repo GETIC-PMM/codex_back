@@ -5,8 +5,8 @@ class Api::V1::TreinamentosController < ApiController
   def index
     @treinamentos = Treinamento.all
 
-    if params[:titulo]
-      @treinamentos = @treinamentos.where("titulo ILIKE ?", "%#{params[:titulo]}%")
+    if [params[:search]].present? && params[:searchBy].present?
+      @treinamentos = @treinamentos.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
     end
 
     if params[:categoria_id].present?
@@ -17,7 +17,7 @@ class Api::V1::TreinamentosController < ApiController
       @treinamentos = @treinamentos.where(autor_id: params[:autor_id])
     end
 
-    paginate @treinamentos, per_page: 15
+    paginate @treinamentos, per_page: params[:per_page] || 10
   end
 
   # GET /treinamentos/1
