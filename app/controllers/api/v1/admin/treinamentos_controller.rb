@@ -25,6 +25,8 @@ class Api::V1::Admin::TreinamentosController < AdminController
   def create
     @treinamento = Treinamento.new(treinamento_params)
 
+    binding.break
+
     if @treinamento.save
       render json: @treinamento, status: :created
     else
@@ -55,16 +57,16 @@ class Api::V1::Admin::TreinamentosController < AdminController
 
   # Only allow a list of trusted parameters through.
   def treinamento_params
-    params.require(:treinamento).permit(
+    params.permit(
       :titulo,
       :resumo,
       :categoria_id,
-      :tag_ids,
       :destaque_home,
       :autor_id,
       :data_publicacao,
       :capa,
-      :corpo
+      :corpo,
+      tag_ids: []
     )
   end
 end
