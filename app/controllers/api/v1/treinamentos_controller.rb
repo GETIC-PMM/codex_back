@@ -6,7 +6,15 @@ class Api::V1::TreinamentosController < ApiController
     @treinamentos = Treinamento.all
 
     if [params[:search]].present? && params[:searchBy].present?
-      @treinamentos = @treinamentos.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
+      @treinamentos = if params[:searchBy] == "all"
+                        @treinamentos.where(
+                          "titulo ILIKE ?",
+                          "%#{params[:search]}%"
+                        ).or(@treinamentos.where("resumo ILIKE ?", "%#{params[:search]}%"))
+                          .or(@treinamentos.where("corpo ILIKE ?", "%#{params[:search]}%"))
+                      else
+                        @treinamentos.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
+                      end
     end
 
     if params[:categoria_id].present?

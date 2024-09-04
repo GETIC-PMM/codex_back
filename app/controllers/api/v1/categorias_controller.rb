@@ -4,8 +4,8 @@ class Api::V1::CategoriasController < ApiController
   # GET /categorias
   def index
     @categorias = Categoria.all
-
     if [params[:search]].present? && params[:searchBy].present?
+
       @categorias = @categorias.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
     end
 
