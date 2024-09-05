@@ -1,25 +1,5 @@
 class Api::V1::Admin::TreinamentosController < AdminController
-  before_action :set_treinamento, only: %i[show update destroy]
-
-  # GET /treinamentos
-  def index
-    @treinamentos = Treinamento.all
-
-    if params[:categoria_id].present?
-      @treinamentos = @treinamentos.where(categoria_id: params[:categoria_id])
-    elsif params[:tag_id].present?
-      @treinamentos = @treinamentos.where(tag_id: params[:tag_id])
-    elsif params[:autor_id].present?
-      @treinamentos = @treinamentos.where(autor_id: params[:autor_id])
-    end
-
-    paginate @treinamentos, per_page: 15
-  end
-
-  # GET /treinamentos/1
-  def show
-    render json: @treinamento
-  end
+  before_action :set_treinamento, only: %i[update destroy]
 
   # POST /treinamentos
   def create
@@ -61,8 +41,10 @@ class Api::V1::Admin::TreinamentosController < AdminController
       :categoria_id,
       :destaque_home,
       :autor_id,
+      :nome_do_autor,
       :data_publicacao,
       :capa,
+      :thumbnail,
       :corpo,
       tag_ids: []
     )

@@ -9,7 +9,9 @@
 #  corpo           :text             not null
 #  data_publicacao :date             not null
 #  destaque_home   :boolean          default(FALSE), not null
+#  nome_do_autor   :string
 #  resumo          :string           not null
+#  thumbnail       :string
 #  titulo          :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -33,12 +35,13 @@ class Treinamento < ApplicationRecord
   has_many :treinamento_tags, dependent: :destroy
   has_many :tags, through: :treinamento_tags
   # validations ...............................................................
-  validates :titulo, :resumo, :corpo, :data_publicacao, :capa, presence: true
+  validates :titulo, :resumo, :corpo, :data_publicacao, :capa, :nome_do_autor, presence: true
   validates :autor_id, uuid: true, presence: true
   # callbacks .................................................................
   # scopes ....................................................................
   # additional config .........................................................
   mount_base64_uploader :capa, ImageUploader
+  mount_base64_uploader :thumbnail, ImageUploader
   # class methods .............................................................
   # instance methods ..........................................................
 end

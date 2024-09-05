@@ -7,7 +7,9 @@
 #  corpo           :text             not null
 #  data_publicacao :date             not null
 #  destaque_home   :boolean          default(FALSE), not null
+#  nome_do_autor   :string
 #  resumo          :string           not null
+#  thumbnail       :string
 #  titulo          :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

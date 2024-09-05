@@ -28,13 +28,16 @@ r = Random.new(Random.new_seed)
   f = File.open(Rails.root.join("app/assets/images/gato.jpg"))
   # copy the file to another file in the same directory
   FileUtils.cp(f.path, Rails.root.join("app/assets/images/gato_copy.jpg"))
+  FileUtils.cp(f.path, Rails.root.join("app/assets/images/gato_copy_2.jpg"))
   Treinamento.create(
     titulo: Faker::Books::Lovecraft.deity,
     resumo: Faker::Books::Lovecraft.fhtagn,
     corpo: Faker::Markdown.sandwich(sentences: 10, repeat: 10),
     data_publicacao: Faker::Date.between(from: 2.weeks.ago, to: Time.zone.today),
     capa: File.new(Rails.root.join("app/assets/images/gato_copy.jpg")),
+    thumbnail: File.new(Rails.root.join("app/assets/images/gato_copy_2.jpg")),
     autor_id: SecureRandom.uuid,
+    nome_do_autor: Faker::JapaneseMedia::OnePiece.character,
     categoria_id: Categoria.all.sample.id,
     tags: [Tag.all.sample, Tag.all.sample],
     destaque_home: r.rand(0..1)
