@@ -25,7 +25,18 @@
 #  fk_rails_...  (categoria_id => categorias.id)
 #
 class TreinamentoSerializer < ActiveModel::Serializer
-  attributes :id, :titulo, :resumo, :categoria, :data_publicacao, :capa, :corpo, :autor_id, :destaque_home
+  attributes :id,
+    :titulo,
+    :resumo,
+    :categoria,
+    :data_publicacao,
+    :capa,
+    :corpo,
+    :autor_id,
+    :destaque_home,
+    :nome_do_autor,
+    :thumbnail
+
   has_one :categoria
   has_many :tags, through: :treinamento_tag
 end
