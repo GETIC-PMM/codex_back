@@ -9,4 +9,10 @@
 #
 class CategoriaSerializer < ActiveModel::Serializer
   attributes :id, :titulo
+
+  has_many :treinamentos, if: :show_treinamentos
+
+  def show_treinamentos
+    @instance_options[:show_treinamentos]
+  end
 end

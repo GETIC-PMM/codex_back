@@ -21,6 +21,12 @@ class Api::V1::CategoriasController < ApiController
     render json: @categoria
   end
 
+  def destaque_home
+    @categorias = Categoria.joins(:treinamentos).group("categorias.id").order("count(treinamentos.id) DESC").limit(3)
+
+    render json: @categorias, show_treinamentos: true
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

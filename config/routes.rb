@@ -22,7 +22,11 @@ Rails.application.routes.draw do
         end
       end
       resources :autores, only: %i[index show]
-      resources :categorias, only: %i[index show]
+      resources :categorias, only: %i[index show] do
+        collection do
+          get :destaque_home
+        end
+      end
       resources :tags, only: %i[index show]
     end
   end
