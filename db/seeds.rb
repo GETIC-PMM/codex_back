@@ -22,6 +22,8 @@ end
   )
 end
 
+r = Random.new(Random.new_seed)
+
 15.times do
   f = File.open(Rails.root.join("app/assets/images/gato.jpg"))
   # copy the file to another file in the same directory
@@ -34,6 +36,7 @@ end
     capa: File.new(Rails.root.join("app/assets/images/gato_copy.jpg")),
     autor_id: SecureRandom.uuid,
     categoria_id: Categoria.all.sample.id,
-    tags: [Tag.all.sample, Tag.all.sample]
+    tags: [Tag.all.sample, Tag.all.sample],
+    destaque_home: r.rand(0..1)
   )
 end
