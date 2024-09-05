@@ -28,7 +28,7 @@ group :development do
 end
 
 group :production do
-  gem "sidekiq", "~> 7.0"
+  gem "sidekiq", "~> 7.3"
 end
 
 gem "active_model_serializers", "~> 0.10.14"
