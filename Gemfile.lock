@@ -142,6 +142,9 @@ GEM
     good_migrations (0.2.1)
       activerecord (>= 3.1)
       railties (>= 3.1)
+    has_scope (0.8.2)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.13.0)
@@ -272,6 +275,10 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
+    ransack (4.2.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.7.0)
       psych (>= 4.0.0)
     redis-client (0.22.2)
@@ -355,6 +362,7 @@ DEPENDENCIES
   factory_bot_rails
   faker (~> 3.4)
   good_migrations
+  has_scope (~> 0.8.2)
   kaminari (~> 1.2)
   keycloak-api-rails (= 0.12.4)
   pager_api (~> 0.3.2)
@@ -363,6 +371,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rack-cors (~> 2.0)
   rails (~> 7.2.1)
+  ransack (~> 4.2)
   rubocop
   rubocop-factory_bot
   rubocop-minitest

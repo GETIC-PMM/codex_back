@@ -45,3 +45,7 @@ gem "kaminari", "~> 1.2"
 gem "pager_api", "~> 0.3.2"
 
 gem "faker", "~> 3.4"
+
+gem "ransack", "~> 4.2"
+
+gem "has_scope", "~> 0.8.2"

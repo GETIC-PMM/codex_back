@@ -39,9 +39,20 @@ class Treinamento < ApplicationRecord
   validates :autor_id, uuid: true, presence: true
   # callbacks .................................................................
   # scopes ....................................................................
+  scope :categoria_id, ->(categoria_id) { where(categoria_id:) }
+  scope :tag_id, ->(tag_id) { joins(:tags).where(tags: {id: tag_id}) }
+  scope :search,
+    lambda { |query|
+      where(
+        "treinamentos.titulo ILIKE ?",
+        "%#{query}%"
+      ).or(where("resumo ILIKE ?", "%#{query}%"))
+        .or(where("corpo ILIKE ?", "%#{query}%"))
+    }
   # additional config .........................................................
   mount_base64_uploader :capa, ImageUploader
   mount_base64_uploader :thumbnail, ImageUploader
   # class methods .............................................................
+  # public instance methods ...................................................
   # instance methods ..........................................................
 end

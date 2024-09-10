@@ -1,29 +1,15 @@
 class Api::V1::TreinamentosController < ApiController
+  include Orderable
+
   before_action :set_treinamento, only: %i[show]
+
+  has_scope :categoria_id, only: :index
+  has_scope :tag_id, only: :index
+  has_scope :search, only: :index
 
   # GET /treinamentos
   def index
-    @treinamentos = Treinamento.all
-
-    if [params[:search]].present? && params[:searchBy].present?
-      @treinamentos = if params[:searchBy] == "all"
-                        @treinamentos.where(
-                          "titulo ILIKE ?",
-                          "%#{params[:search]}%"
-                        ).or(@treinamentos.where("resumo ILIKE ?", "%#{params[:search]}%"))
-                          .or(@treinamentos.where("corpo ILIKE ?", "%#{params[:search]}%"))
-                      else
-                        @treinamentos.where("#{params[:searchBy]} ILIKE ?", "%#{params[:search]}%")
-                      end
-    end
-
-    if params[:categoria_id].present?
-      @treinamentos = @treinamentos.where(categoria_id: params[:categoria_id])
-    elsif params[:tag_id].present?
-      @treinamentos = @treinamentos.where(tag_id: params[:tag_id])
-    elsif params[:autor_id].present?
-      @treinamentos = @treinamentos.where(autor_id: params[:autor_id])
-    end
+    @treinamentos = apply_scopes(Treinamento).order(ordering_params(params)).all
 
     paginate @treinamentos, per_page: params[:per_page] || 10
   end
